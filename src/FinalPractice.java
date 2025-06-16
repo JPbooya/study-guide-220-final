@@ -130,7 +130,7 @@ public class FinalPractice {
 
         if(root.left == null && root.right == null) {
             if(root.data % 2 != 0) {
-                return 1;
+                return root.data;
             }
         }
         return treeNodeEven(root.left) + treeNodeEven(root.right);
