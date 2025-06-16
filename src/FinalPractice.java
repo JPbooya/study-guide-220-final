@@ -117,37 +117,34 @@ public class FinalPractice {
     public static int treeNodeEven(TreeNode root) {
         if(root == null) return 0;
 
-        int sum = 0;
         if(root.left == null && root.right == null) {
             if(root.data % 2 == 0) {
-                sum += root.data;
+                return root.data;
             }
         }
         
-        return sum + treeNodeEven(root.right) + treeNodeEven(root.left) ;
+        return treeNodeEven(root.right) + treeNodeEven(root.left) ;
     }
 
     public static int leafNodeOdd(TreeNode root) {
 
-        int sum = 0;
         if(root.left == null && root.right == null) {
-            if(root.data % 2 == 0) {
-                sum += root.data;
+            if(root.data % 2 != 0) {
+                return 1;
             }
         }
-        return sum;
+        return treeNodeEven(root.left) + treeNodeEven(root.right);
     }
 
     public static int branchNodeOdd(TreeNode root) {
+
         if(root == null) return 0;
 
-        int sum = 0;
         if((root.left != null || root.right != null) && root.data % 2 != 0) {
-                sum += root.data;
+                return root.data + branchNodeOdd(root.left) + branchNodeOdd(root.right);
             }
-
-            return sum + branchNodeOdd(root.left) + branchNodeOdd(root.right);
-    
+        
+            return branchNodeOdd(root.left) + branchNodeOdd(root.right);
         }
         
     public static Map<Integer, Integer> intMap(ListNode head) {
